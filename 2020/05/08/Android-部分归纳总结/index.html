@@ -1,0 +1,296 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Android 部分归纳总结 | 叶子的随想</title><meta name="description" content="Android 部分归纳总结"><meta name="keywords" content="Android 总结"><meta name="author" content="叶 子胜"><meta name="copyright" content="叶 子胜"><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Android 部分归纳总结"><meta name="twitter:description" content="Android 部分归纳总结"><meta name="twitter:image" content="https://yezisheng.tech/img/post.jpg"><meta property="og:type" content="article"><meta property="og:title" content="Android 部分归纳总结"><meta property="og:url" content="https://yezisheng.tech/2020/05/08/Android-%E9%83%A8%E5%88%86%E5%BD%92%E7%BA%B3%E6%80%BB%E7%BB%93/"><meta property="og:site_name" content="叶子的随想"><meta property="og:description" content="Android 部分归纳总结"><meta property="og:image" content="https://yezisheng.tech/img/post.jpg"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>var autoChangeMode = '1'
+var t = Cookies.get("theme")
+if (autoChangeMode == '1'){
+  var isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  var isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+  var isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined){
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport){
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour < 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+  }
+  } else if (t == 'light') activateLightMode()
+  else activateDarkMode()
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="https://yezisheng.tech/2020/05/08/Android-%E9%83%A8%E5%88%86%E5%BD%92%E7%BA%B3%E6%80%BB%E7%BB%93/"><link rel="next" title="Hexo 示例" href="https://yezisheng.tech/2020/04/23/Hexo%20%E7%A4%BA%E4%BE%8B/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  highlightShrink: 'false',
+  isFontAwesomeV5: false,
+  isPhotoFigcaption: false
+  
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isSidebar: true  
+  }</script><noscript><style>
+#page-header {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">2</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">1</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div></div></div></div><i class="fa fa-arrow-right on" id="toggle-sidebar" aria-hidden="true">     </i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#在查资料的时候无意之间发现前同事写下的一些博客，总结得比较全面，并且还有自己的一些理解，因此提供一个链接，方便随时去学习查看"><span class="toc-number">1.</span> <span class="toc-text">在查资料的时候无意之间发现前同事写下的一些博客，总结得比较全面，并且还有自己的一些理解，因此提供一个链接，方便随时去学习查看</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#知识体系引导"><span class="toc-number"></span> <span class="toc-text">知识体系引导</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#精品系列"><span class="toc-number"></span> <span class="toc-text">精品系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android性能优化盘点"><span class="toc-number">1.</span> <span class="toc-text">Android性能优化盘点:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Framework"><span class="toc-number"></span> <span class="toc-text">Framework:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、系统启动"><span class="toc-number">1.</span> <span class="toc-text">一、系统启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、进程管理"><span class="toc-number">2.</span> <span class="toc-text">二、进程管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、通信"><span class="toc-number">3.</span> <span class="toc-text">三、通信</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#进程内通信："><span class="toc-number">3.1.</span> <span class="toc-text">进程内通信：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#进程间通信："><span class="toc-number">3.2.</span> <span class="toc-text">进程间通信：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、图形系统"><span class="toc-number">4.</span> <span class="toc-text">四、图形系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#粗略梳理："><span class="toc-number">4.1.</span> <span class="toc-text">粗略梳理：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HWUI："><span class="toc-number">4.2.</span> <span class="toc-text">HWUI：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Input"><span class="toc-number">4.3.</span> <span class="toc-text">Input:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、核心服务"><span class="toc-number">5.</span> <span class="toc-text">五、核心服务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#AMS"><span class="toc-number">5.1.</span> <span class="toc-text">AMS</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Activity"><span class="toc-number">5.1.1.</span> <span class="toc-text">Activity</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Service"><span class="toc-number">5.1.2.</span> <span class="toc-text">Service</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PMS"><span class="toc-number">5.2.</span> <span class="toc-text">PMS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#WMS"><span class="toc-number">5.3.</span> <span class="toc-text">WMS</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、性能优化专题"><span class="toc-number">6.</span> <span class="toc-text">六、性能优化专题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#工具："><span class="toc-number">6.1.</span> <span class="toc-text">工具：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实战："><span class="toc-number">6.2.</span> <span class="toc-text">实战：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#ANR问题处理"><span class="toc-number">6.2.1.</span> <span class="toc-text">ANR问题处理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#优化实践-amp-思考："><span class="toc-number">6.2.2.</span> <span class="toc-text">优化实践&amp;思考：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#systrace看冷启过程："><span class="toc-number">6.2.3.</span> <span class="toc-text">systrace看冷启过程：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#启动耗时分析："><span class="toc-number">6.2.4.</span> <span class="toc-text">启动耗时分析：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#内存问题分析："><span class="toc-number">6.2.5.</span> <span class="toc-text">内存问题分析：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#编译问题分析："><span class="toc-number">6.2.6.</span> <span class="toc-text">编译问题分析：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#应用启动流程梳理"><span class="toc-number">6.2.7.</span> <span class="toc-text">应用启动流程梳理</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七、其他"><span class="toc-number">7.</span> <span class="toc-text">七、其他</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#App"><span class="toc-number"></span> <span class="toc-text">App</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、Java基础"><span class="toc-number">1.</span> <span class="toc-text">一、Java基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、网络"><span class="toc-number">2.</span> <span class="toc-text">二、网络</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、线程"><span class="toc-number">3.</span> <span class="toc-text">三、线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、虚拟机"><span class="toc-number">4.</span> <span class="toc-text">四、虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、Gradle"><span class="toc-number">5.</span> <span class="toc-text">五、Gradle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、其他"><span class="toc-number">6.</span> <span class="toc-text">六、其他</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux"><span class="toc-number"></span> <span class="toc-text">Linux:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、内存管理："><span class="toc-number">1.</span> <span class="toc-text">一、内存管理：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、进程管理与进程调度"><span class="toc-number">2.</span> <span class="toc-text">二、进程管理与进程调度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、文件-amp-权限："><span class="toc-number">3.</span> <span class="toc-text">三、文件&amp;权限：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#脚本入门："><span class="toc-number"></span> <span class="toc-text">脚本入门：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、Python"><span class="toc-number">1.</span> <span class="toc-text">一、Python</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、makeFile"><span class="toc-number">2.</span> <span class="toc-text">二、makeFile</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据结构-amp-算法"><span class="toc-number"></span> <span class="toc-text">数据结构&amp;算法</span></a></div></div></div><div id="body-wrap"><div class="post-bg" id="nav" style="background-image: url(/img/post.jpg)"><div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">叶子的随想</a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li></ul></div></div><span class="toggle-menu close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span></span></div><div id="post-info"><div id="post-title"><div class="posttitle">Android 部分归纳总结</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2020-05-08 11:17:46"><i class="fa fa-calendar" aria-hidden="true"></i> 发表于 2020-05-08</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2020-05-08 14:47:36"><i class="fa fa-history" aria-hidden="true"></i> 更新于 2020-05-08</span></time></div><div class="meta-secondline"> </div><div class="meta-thirdline"><span class="post-meta-pv-cv"><i class="fa fa-eye post-meta__icon" aria-hidden="true"> </i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"></span></div></div></div></div><main class="layout_post" id="content-inner"><article id="post"><div id="article-container"><h3 id="在查资料的时候无意之间发现前同事写下的一些博客，总结得比较全面，并且还有自己的一些理解，因此提供一个链接，方便随时去学习查看"><a href="#在查资料的时候无意之间发现前同事写下的一些博客，总结得比较全面，并且还有自己的一些理解，因此提供一个链接，方便随时去学习查看" class="headerlink" title="在查资料的时候无意之间发现前同事写下的一些博客，总结得比较全面，并且还有自己的一些理解，因此提供一个链接，方便随时去学习查看"></a>在查资料的时候无意之间发现前同事写下的一些博客，总结得比较全面，并且还有自己的一些理解，因此提供一个链接，方便随时去学习查看</h3><h1 id="知识体系引导"><a href="#知识体系引导" class="headerlink" title="知识体系引导"></a>知识体系引导</h1><p><a href="https://www.jianshu.com/p/c2fffcd5caf2" target="_blank" rel="noopener">了解Android系统架构</a></p>
+<p><a href="https://www.jianshu.com/p/881a7c2feaff" target="_blank" rel="noopener">如何玩Android系统源码</a></p>
+<h2 id="精品系列"><a href="#精品系列" class="headerlink" title="精品系列"></a>精品系列</h2><ul>
+<li><h3 id="Android性能优化盘点"><a href="#Android性能优化盘点" class="headerlink" title="Android性能优化盘点:"></a>Android性能优化盘点:</h3><p> <a href="https://www.jianshu.com/p/456ebbe42fc5" target="_blank" rel="noopener">Android性能优化盘点 - 系统基础</a></p>
+<p> <a href="https://www.jianshu.com/p/136635a06c39" target="_blank" rel="noopener">Android性能优化盘点 - 启动优化</a></p>
+<p> <a href="https://www.jianshu.com/p/03dd61816051" target="_blank" rel="noopener">Android性能优化盘点 - 卡顿优化</a></p>
+<p> <a href="https://www.jianshu.com/p/9850c5cbf242" target="_blank" rel="noopener">Android性能优化盘点 - 布局优化</a></p>
+<p> <a href="https://www.jianshu.com/p/fba7b43bdc9c" target="_blank" rel="noopener">Android性能优化盘点 - 内存优化</a></p>
+</li>
+</ul>
+<h2 id="Framework"><a href="#Framework" class="headerlink" title="Framework:"></a>Framework:</h2><h3 id="一、系统启动"><a href="#一、系统启动" class="headerlink" title="一、系统启动"></a>一、系统启动</h3><p><a href="https://www.jianshu.com/p/e084414c7e1c" target="_blank" rel="noopener">Android系统启动（一）-开篇</a></p>
+<p><a href="https://www.jianshu.com/p/9fad37c140f9" target="_blank" rel="noopener">Android系统启动（二）-Init篇</a></p>
+<p><a href="https://www.jianshu.com/p/eaa8c8f523aa" target="_blank" rel="noopener">Android系统启动（三）-Zygote篇</a></p>
+<p><a href="https://www.jianshu.com/p/c6f464457f4c" target="_blank" rel="noopener">Android系统启动（四）-SystemServer篇</a></p>
+<p><a href="https://www.jianshu.com/p/1e7991d5dc98" target="_blank" rel="noopener">Android系统启动（五）-ActivityManagerService篇</a></p>
+<p><a href="https://www.jianshu.com/p/4c5ddcac0963" target="_blank" rel="noopener">Android系统启动（六）-Launcher篇</a></p>
+<h3 id="二、进程管理"><a href="#二、进程管理" class="headerlink" title="二、进程管理"></a>二、进程管理</h3><p><a href="https://www.jianshu.com/p/d4b1ce1372e2" target="_blank" rel="noopener">Android进程管理篇（一）-应用进程启动过程</a></p>
+<p><a href="https://www.jianshu.com/p/ee7c773190dc" target="_blank" rel="noopener">Android进程管理篇（二）-进程查杀方式总结</a></p>
+<p><a href="https://www.jianshu.com/p/73db4dece5d3" target="_blank" rel="noopener">Android进程管理篇（三）-进程adj算法</a></p>
+<p><a href="https://www.jianshu.com/p/0532e4239703" target="_blank" rel="noopener">Android 进程管理篇（四）-cpu限制</a></p>
+<p><a href="https://www.jianshu.com/p/1d2f6a5bbe76" target="_blank" rel="noopener">Android 进程管理篇（五）-调度策略与优先级</a></p>
+<p><a href="https://www.jianshu.com/p/09922ab0390b" target="_blank" rel="noopener">lowmemorykiller总结</a></p>
+<p><a href="https://www.jianshu.com/p/ad56132ae4a7" target="_blank" rel="noopener">打通Framework与Kernel-谈谈我对进程管理的理解</a></p>
+<h3 id="三、通信"><a href="#三、通信" class="headerlink" title="三、通信"></a>三、通信</h3><ul>
+<li><h4 id="进程内通信："><a href="#进程内通信：" class="headerlink" title="进程内通信："></a>进程内通信：</h4><p><a href="https://www.jianshu.com/p/f593df9e2185" target="_blank" rel="noopener">Android通信方式篇（一）-消息机制（Java层）</a></p>
+<p><a href="https://www.jianshu.com/p/0dbe25bd406c" target="_blank" rel="noopener">Android通信方式篇（二）-消息机制(ThreadLocal详解)</a></p>
+<p><a href="https://www.jianshu.com/p/cef19debd41f" target="_blank" rel="noopener">Android通信方式篇（三）-消息机制(Native层)</a></p>
+</li>
+<li><h4 id="进程间通信："><a href="#进程间通信：" class="headerlink" title="进程间通信："></a>进程间通信：</h4><p><a href="https://www.jianshu.com/p/533de5fa6e4c" target="_blank" rel="noopener">Android通信方式篇（四）-Binder机制（开篇）</a></p>
+<p><a href="https://www.jianshu.com/p/1d20937fa231" target="_blank" rel="noopener">Android通信方式篇（五）-Binder机制（Kernel层）</a></p>
+<p><a href="https://www.jianshu.com/p/5584b98a71e6" target="_blank" rel="noopener">Android通信方式篇（六）-Binder机制（Native层（上））</a></p>
+<p><a href="https://www.jianshu.com/p/baaf88855c31" target="_blank" rel="noopener">Android通信方式篇（七）-Binder机制（Native层（下））</a></p>
+<p><a href="https://www.jianshu.com/p/98ff249d5752" target="_blank" rel="noopener">Android通信方式篇（八）-Binder机制(Framework层)</a></p>
+<p><a href="https://www.jianshu.com/p/b744edbd4c3e" target="_blank" rel="noopener">Binder梳理</a></p>
+</li>
+</ul>
+<h3 id="四、图形系统"><a href="#四、图形系统" class="headerlink" title="四、图形系统"></a>四、图形系统</h3><ul>
+<li><h4 id="粗略梳理："><a href="#粗略梳理：" class="headerlink" title="粗略梳理："></a>粗略梳理：</h4><p><a href="https://www.jianshu.com/p/b3a1ea7923e7" target="_blank" rel="noopener">Android图形系统（一）-Window加载视图过程</a></p>
+<p><a href="https://www.jianshu.com/p/c2b38bada5ba" target="_blank" rel="noopener">Android图形系统（二）-DecorView布局加载流程</a></p>
+<p><a href="https://www.jianshu.com/p/58d22426e79e" target="_blank" rel="noopener">Android图形系统（三）-View绘制流程</a></p>
+<p><a href="https://www.jianshu.com/p/2f9bb9da92ec" target="_blank" rel="noopener">Android图形系统（四）-Activity、Window、View关系总结</a></p>
+<p><a href="https://www.jianshu.com/p/fcdd8f3bd448" target="_blank" rel="noopener">Android图形系统（五）-Surface图形系统概览</a></p>
+<p><a href="https://www.jianshu.com/p/6964157c2615" target="_blank" rel="noopener">Android图形系统（六）-app与SurfaceFlinger服务连接过程</a></p>
+<p><a href="https://www.jianshu.com/p/2de484da8863" target="_blank" rel="noopener">Android图形系统（七）-app请求SurfaceFlinger创建Surface过程</a></p>
+<p><a href="https://www.jianshu.com/p/987552971637" target="_blank" rel="noopener">Android图形系统（八）-app与SurfaceFlinger共享UI元数据过程</a></p>
+<p><a href="https://www.jianshu.com/p/6d99948d2a0a" target="_blank" rel="noopener">Android图形系统（九）-View、Canvas与Surface的关系</a></p>
+<p><a href="https://www.jianshu.com/p/d4c37793edeb" target="_blank" rel="noopener">Android图形系统（十）-SurfaceFlinger启动及图层合成送显过程</a></p>
+<p><a href="https://www.jianshu.com/p/bab0b454e39e" target="_blank" rel="noopener">Android图形系统（十一）-Choreographer</a></p>
+<p><a href="https://www.jianshu.com/p/5f5ed8ada51b" target="_blank" rel="noopener">Android图形系统（十二）-流畅度概念</a></p>
+<p><a href="https://www.jianshu.com/p/1ebd152273e4" target="_blank" rel="noopener">Android图形系统（十三）-Vsync信号处理</a></p>
+</li>
+<li><h4 id="HWUI："><a href="#HWUI：" class="headerlink" title="HWUI："></a>HWUI：</h4><p><a href="https://www.jianshu.com/p/81b7c741da71" target="_blank" rel="noopener">Android9.0 硬件加速（一）-开篇</a></p>
+<p><a href="https://www.jianshu.com/p/c5855e680ea8" target="_blank" rel="noopener">Android9.0 硬件加速（二）-RenderThread线程的启动</a></p>
+<p><a href="https://www.jianshu.com/p/526756baf9ba" target="_blank" rel="noopener">Android9.0 硬件加速（三）-绑定Surface到RenderThread</a></p>
+<p><a href="https://www.jianshu.com/p/f8bf7d80788f" target="_blank" rel="noopener">Android9.0 硬件加速（四）-UI Thread绘制过程</a></p>
+<p><a href="https://www.jianshu.com/p/cd243d80bcbe" target="_blank" rel="noopener">Android9.0 硬件加速（五） -RenderThread渲染过程</a></p>
+</li>
+<li><h4 id="Input"><a href="#Input" class="headerlink" title="Input:"></a>Input:</h4><p><a href="https://www.jianshu.com/p/5a879b7ad3b2" target="_blank" rel="noopener">Android Input（一）-相关模块初始化</a></p>
+<p><a href="https://www.jianshu.com/p/fb7071cc5785" target="_blank" rel="noopener">Android Input（二）-输入子系统</a></p>
+<p><a href="https://www.jianshu.com/p/d10cfe854654" target="_blank" rel="noopener">Android Input（三）-InputReader获取事件</a></p>
+<p><a href="https://www.jianshu.com/p/6e250a8ff80c" target="_blank" rel="noopener">Android Input（四） -InputDispatcher分发事件</a></p>
+<p><a href="https://www.jianshu.com/p/b09afd403f71" target="_blank" rel="noopener">Android Input（五）-InputChannel通信</a></p>
+<p><a href="https://www.jianshu.com/p/4b4ce5f30ab6" target="_blank" rel="noopener">Android Input（六）-ViewRootImpl接收事件</a></p>
+<p><a href="https://www.jianshu.com/p/3e5fbf5980e7" target="_blank" rel="noopener">Android Input（七）-ViewRootImpl处理事件</a></p>
+<p><a href="https://www.jianshu.com/p/b8b35d3ee052" target="_blank" rel="noopener">Android Input（八）- ANR原理分析</a><br><a href="https://www.jianshu.com/p/d03b8925f748" target="_blank" rel="noopener">Android Input（九）-Input问题分析指北</a></p>
+<p><a href="https://www.jianshu.com/p/c991331e2540" target="_blank" rel="noopener">Android Input（十）-整体流程图</a></p>
+</li>
+</ul>
+<h3 id="五、核心服务"><a href="#五、核心服务" class="headerlink" title="五、核心服务"></a>五、核心服务</h3><ul>
+<li><h4 id="AMS"><a href="#AMS" class="headerlink" title="AMS"></a>AMS</h4><ul>
+<li><h5 id="Activity"><a href="#Activity" class="headerlink" title="Activity"></a>Activity</h5><p>  <a href="https://www.jianshu.com/p/17c37233ca4e" target="_blank" rel="noopener">四大组件之Activity（一）-启动过程概览</a></p>
+<p>  <a href="https://www.jianshu.com/p/9740ab570df7" target="_blank" rel="noopener">四大组件之Activity（二）-StartingWindow流程分析</a></p>
+<p>  <a href="https://www.jianshu.com/p/591f40d2e409" target="_blank" rel="noopener">四大组件之Activity（三）- 任务栈</a></p>
+</li>
+<li><h5 id="Service"><a href="#Service" class="headerlink" title="Service"></a>Service</h5><p>  <a href="https://www.jianshu.com/p/ca909a66652f" target="_blank" rel="noopener">四大组件之Service（一）-Service启动过程</a></p>
+</li>
+</ul>
+</li>
+<li><h4 id="PMS"><a href="#PMS" class="headerlink" title="PMS"></a>PMS</h4><p><a href="https://www.jianshu.com/p/cb0555d62b9c" target="_blank" rel="noopener">Android PMS（一）-启动流程</a></p>
+<p><a href="https://www.jianshu.com/p/3c2ed166e829" target="_blank" rel="noopener">Android PMS（二）-Apk安装流程</a></p>
+<p><a href="https://www.jianshu.com/p/eb32a844f887" target="_blank" rel="noopener">Android PMS（三）-Installd执行dexopt流程</a></p>
+<p><a href="https://www.jianshu.com/p/7af55bb8b303" target="_blank" rel="noopener">Android PMS（四）-安装微信</a></p>
+</li>
+<li><h4 id="WMS"><a href="#WMS" class="headerlink" title="WMS"></a>WMS</h4><p><a href="https://www.jianshu.com/p/3b5b6f2469d8" target="_blank" rel="noopener">Android WMS（一）-窗口管理</a></p>
+<p><a href="https://www.jianshu.com/p/fe610bc199df" target="_blank" rel="noopener">Android WMS（二）-Surface管理</a></p>
+<p><a href="https://www.jianshu.com/p/c15b23526e2e" target="_blank" rel="noopener">Android WMS（三）- Input管理</a></p>
+</li>
+</ul>
+<h3 id="六、性能优化专题"><a href="#六、性能优化专题" class="headerlink" title="六、性能优化专题"></a>六、性能优化专题</h3><ul>
+<li><h4 id="工具："><a href="#工具：" class="headerlink" title="工具："></a>工具：</h4><p><a href="https://www.jianshu.com/p/d4309061291b" target="_blank" rel="noopener">性能优化工具（一）-StrictMode</a></p>
+<p><a href="https://www.jianshu.com/p/fa6cfad8ccc2" target="_blank" rel="noopener">性能优化工具（二）-Systrace</a></p>
+<p><a href="https://www.jianshu.com/p/ac753e71d08d" target="_blank" rel="noopener">性能优化工具（三）-TraceView</a></p>
+<p><a href="https://www.jianshu.com/p/d8e994bfb382" target="_blank" rel="noopener">性能优化工具（四）-Allocation Tracker</a></p>
+<p><a href="https://www.jianshu.com/p/5035745da456" target="_blank" rel="noopener">性能优化工具（五）-Heap Viewer</a></p>
+<p><a href="https://www.jianshu.com/p/1b64024f2d08" target="_blank" rel="noopener">性能优化工具（六）-Layout Inspector</a></p>
+<p><a href="https://www.jianshu.com/p/a0e8575e9846" target="_blank" rel="noopener">性能优化工具（七）-调试GPU过度绘制 &amp; GPU呈现模式分析</a></p>
+<p><a href="https://www.jianshu.com/p/97251691af88" target="_blank" rel="noopener">性能优化工具（八）-MAT</a></p>
+<p><a href="https://www.jianshu.com/p/70b8c87ea877" target="_blank" rel="noopener">性能优化工具（九）-LeakCanary</a></p>
+<p><a href="https://www.jianshu.com/p/9edfe9d5eb34" target="_blank" rel="noopener">性能优化工具（十）- Android内存分析命令</a></p>
+<p><a href="https://www.jianshu.com/p/596b2ef68342" target="_blank" rel="noopener">性能优化工具（十一）-Android Profiler</a></p>
+<p><a href="https://www.jianshu.com/p/b572df88e5de" target="_blank" rel="noopener">性能优化工具（十二）-使用 CPU Profiler 检查 CPU Activity 和函数跟踪</a></p>
+<p><a href="https://www.jianshu.com/p/72b213fa6a26" target="_blank" rel="noopener">性能优化工具（十三）-使用 Memory Profiler 查看 Java 堆和内存分配</a></p>
+<p><a href="https://www.jianshu.com/p/a0865cea0b2f" target="_blank" rel="noopener">性能优化工具（十四）-利用 Network Profiler 检查网络流量</a></p>
+<p>附：</p>
+<p><a href="https://links.jianshu.com/go?to=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F25277481" target="_blank" rel="noopener">Simpleperf</a></p>
+<p><a href="https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2Fgoogle%2Fbattery-historian" target="_blank" rel="noopener">Battery Historain</a></p>
+<p><a href="https://links.jianshu.com/go?to=https%3A%2F%2Fcloud.tencent.com%2Fdeveloper%2Farticle%2F1377724" target="_blank" rel="noopener">Matrix</a></p>
+</li>
+<li><h4 id="实战："><a href="#实战：" class="headerlink" title="实战："></a>实战：</h4><ul>
+<li><h5 id="ANR问题处理"><a href="#ANR问题处理" class="headerlink" title="ANR问题处理"></a>ANR问题处理</h5><p>  <a href="https://www.jianshu.com/p/082045769443" target="_blank" rel="noopener">Android ANR（一）-基本分析方法</a></p>
+<p>  <a href="https://www.jianshu.com/p/fe7373d224ca" target="_blank" rel="noopener">Android ANR（二）-触发原理</a></p>
+</li>
+<li><h5 id="优化实践-amp-思考："><a href="#优化实践-amp-思考：" class="headerlink" title="优化实践&amp;思考："></a>优化实践&amp;思考：</h5><p>  <a href="https://www.jianshu.com/p/6e01fc73f292" target="_blank" rel="noopener">性能优化实践（一）-安装包瘦身</a></p>
+<p>  <a href="https://www.jianshu.com/p/3a4cf1bb161c" target="_blank" rel="noopener">性能优化实践（二）-布局优化</a></p>
+<p>  <a href="https://www.jianshu.com/p/4e2096099fe8" target="_blank" rel="noopener">性能优化实践（三）-卡顿优化思考</a></p>
+<p>  <a href="https://www.jianshu.com/p/2cf99d3766d9" target="_blank" rel="noopener">性能优化实践（四）-内存优化思考</a></p>
+</li>
+<li><h5 id="systrace看冷启过程："><a href="#systrace看冷启过程：" class="headerlink" title="systrace看冷启过程："></a>systrace看冷启过程：</h5><p>  <a href="https://www.jianshu.com/p/bf715b2e3d05" target="_blank" rel="noopener">从systrace看app冷启动过程（一）-应用程序启动</a></p>
+<p>  <a href="https://www.jianshu.com/p/9e61c8968503" target="_blank" rel="noopener">从systrace看app冷启动过程（二）-首帧的绘制与渲染</a></p>
+<p>  <a href="https://www.jianshu.com/p/3829158b4699" target="_blank" rel="noopener">从systrace看app冷启动过程（三）-首帧的合成与送显</a></p>
+</li>
+<li><h5 id="启动耗时分析："><a href="#启动耗时分析：" class="headerlink" title="启动耗时分析："></a>启动耗时分析：</h5><p>  <a href="https://www.jianshu.com/p/eee10dc22828" target="_blank" rel="noopener">启动耗时分析（一）-测量应用启动时间</a></p>
+<p>  <a href="https://www.jianshu.com/p/864da9d0cdb4" target="_blank" rel="noopener">启动耗时分析（二）-CPU问题分析</a></p>
+<p>  <a href="https://www.jianshu.com/p/636eb2e12d54" target="_blank" rel="noopener">启动耗时分析（三）-ART编译分析</a></p>
+<p>  <a href="https://www.jianshu.com/p/3ed1938ff75d" target="_blank" rel="noopener">启动耗时分析（四）-具体方法耗时分析</a></p>
+</li>
+<li><h5 id="内存问题分析："><a href="#内存问题分析：" class="headerlink" title="内存问题分析："></a>内存问题分析：</h5><p>  <a href="https://www.jianshu.com/p/56ed15886fae" target="_blank" rel="noopener">内存管理基础（上）</a></p>
+<p>  <a href="https://www.jianshu.com/p/542eeb7e738d" target="_blank" rel="noopener">内存管理基础（下）</a></p>
+</li>
+<li><h5 id="编译问题分析："><a href="#编译问题分析：" class="headerlink" title="编译问题分析："></a>编译问题分析：</h5><p>  <a href="https://www.jianshu.com/p/41ded4b9c653" target="_blank" rel="noopener">Android 9.0 ART编译分析（一）-编译通路梳理</a></p>
+<p>  <a href="https://www.jianshu.com/p/94255cb157f6" target="_blank" rel="noopener">Android 9.0 ART编译分析（二）-Installd触发dex2oat编译流程</a></p>
+<p>  <a href="https://www.jianshu.com/p/2ded97763b54" target="_blank" rel="noopener">Android 9.0 ART编译分析（三）-虚拟机触发dex2oat编译流程</a></p>
+</li>
+<li><h5 id="应用启动流程梳理"><a href="#应用启动流程梳理" class="headerlink" title="应用启动流程梳理"></a>应用启动流程梳理</h5><p>  <a href="https://www.jianshu.com/p/475f26c571c3" target="_blank" rel="noopener">应用启动流程梳理（一）-应用安装流程</a></p>
+<p>  <a href="https://www.jianshu.com/p/0d46b7f27a6f" target="_blank" rel="noopener">应用启动流程梳理（二）-Input事件传递流程</a></p>
+<p>  <a href="https://www.jianshu.com/p/5573d4044758" target="_blank" rel="noopener">应用启动流程梳理（三）-Activity启动流程</a></p>
+<p>  <a href="https://www.jianshu.com/p/dafbcebe4c4c" target="_blank" rel="noopener">应用启动流程梳理（四）-视图处理流程</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="七、其他"><a href="#七、其他" class="headerlink" title="七、其他"></a>七、其他</h3><p><a href="https://www.jianshu.com/p/d4e0eccb7639" target="_blank" rel="noopener">手机状态栏信号显示流程浅析</a></p>
+<p><a href="https://www.jianshu.com/p/1c995328c293" target="_blank" rel="noopener">Service的自动重启问题</a></p>
+<p><a href="https://www.jianshu.com/p/156d6ea2e8c0" target="_blank" rel="noopener">任务列表流程浅析</a></p>
+<p><a href="https://www.jianshu.com/p/cfe9de14ed52" target="_blank" rel="noopener">Android phone 拨号、来电流程</a></p>
+<p><a href="https://www.jianshu.com/p/3bab26d25d2e" target="_blank" rel="noopener">内存耗用：VSS/RSS/PSS/USS 的介绍</a></p>
+<h2 id="App"><a href="#App" class="headerlink" title="App"></a>App</h2><h3 id="一、Java基础"><a href="#一、Java基础" class="headerlink" title="一、Java基础"></a>一、Java基础</h3><p><a href="https://www.jianshu.com/p/d7e470217272" target="_blank" rel="noopener">Java基础（一）-泛型</a></p>
+<p><a href="https://www.jianshu.com/p/d2319cfe823f" target="_blank" rel="noopener">Java基础（二）-注解</a></p>
+<p><a href="https://www.jianshu.com/p/4463941142e6" target="_blank" rel="noopener">Java基础（三）-反射</a></p>
+<p><a href="https://www.jianshu.com/p/c3ff1f634eb3" target="_blank" rel="noopener">Java基础（四）-IO / NIO</a></p>
+<p><a href="https://www.jianshu.com/p/9554c946ca7a" target="_blank" rel="noopener">Java基础（五）-集合之HashMap</a></p>
+<p><a href="https://www.jianshu.com/p/0556621b366e" target="_blank" rel="noopener">Java基础（六）-CurrentHashMap线程安全实现</a></p>
+<p><a href="https://www.jianshu.com/p/0770ecaf2dde" target="_blank" rel="noopener">Java基础（七）-LinkedHashMap原理分析</a></p>
+<p><a href="https://www.jianshu.com/p/d344141eff05" target="_blank" rel="noopener">Java基础（八）-设计模式</a></p>
+<h3 id="二、网络"><a href="#二、网络" class="headerlink" title="二、网络"></a>二、网络</h3><p><a href="https://www.jianshu.com/p/bd83e634b671" target="_blank" rel="noopener">Android网络编程（一）-协议分层</a></p>
+<p><a href="https://www.jianshu.com/p/23d79ba9f25a" target="_blank" rel="noopener">Android网络编程（二）-session、cookie、token</a></p>
+<p><a href="https://www.jianshu.com/p/193dfbd3ecd9" target="_blank" rel="noopener">Android网络编程（三）-HTTP协议</a></p>
+<p><a href="https://www.jianshu.com/p/7ed15d1462be" target="_blank" rel="noopener">Android网络编程（四）-TCP / UDP协议</a></p>
+<p><a href="https://www.jianshu.com/p/499874ddf3fa" target="_blank" rel="noopener">Android网络编程（五）-由Okhttp看网络库</a></p>
+<h3 id="三、线程"><a href="#三、线程" class="headerlink" title="三、线程"></a>三、线程</h3><p><a href="https://www.jianshu.com/p/e7b618deecb5" target="_blank" rel="noopener">多线程（一）-线程基础</a></p>
+<p><a href="https://www.jianshu.com/p/c7e4856ab1a9" target="_blank" rel="noopener">多线程（二）-线程安全</a></p>
+<p><a href="https://www.jianshu.com/p/96e6ee9d56fe" target="_blank" rel="noopener">多线程（三）-为主线程减负的多线程方案</a></p>
+<h3 id="四、虚拟机"><a href="#四、虚拟机" class="headerlink" title="四、虚拟机"></a>四、虚拟机</h3><p><a href="https://www.jianshu.com/p/75db0cce4296" target="_blank" rel="noopener">虚拟机（一）-JVM执行java代码流程浅析</a></p>
+<p><a href="https://www.jianshu.com/p/964166932eb9" target="_blank" rel="noopener">虚拟机（二）-Dalvik执行java代码流程浅析</a></p>
+<p><a href="https://www.jianshu.com/p/8cdc8873b49b" target="_blank" rel="noopener">虚拟机（三）-JVM 、DVM 、ART简单对比</a></p>
+<p><a href="https://www.jianshu.com/p/220d6827be0d" target="_blank" rel="noopener">虚拟机（四）-JVM垃圾回收</a></p>
+<p><a href="https://www.jianshu.com/p/7a8a9899b67c" target="_blank" rel="noopener">class &amp; dex</a></p>
+<p><a href="https://www.jianshu.com/p/7aea4c0b68cb" target="_blank" rel="noopener">JVM虚拟机</a></p>
+<h3 id="五、Gradle"><a href="#五、Gradle" class="headerlink" title="五、Gradle"></a>五、Gradle</h3><p><a href="https://www.jianshu.com/p/4cd59de50145" target="_blank" rel="noopener">Android Gradle（一）- 开篇</a></p>
+<p><a href="https://www.jianshu.com/p/40d7e17687c8" target="_blank" rel="noopener">Android Gradle（二）- groovy</a></p>
+<p><a href="https://www.jianshu.com/p/147c19163b9b" target="_blank" rel="noopener">Android Gradle（三）- gradle</a></p>
+<p><a href="https://www.jianshu.com/p/44e6955ef0e2" target="_blank" rel="noopener">Android Gradle（四）- 自定义plugin</a></p>
+<h3 id="六、其他"><a href="#六、其他" class="headerlink" title="六、其他"></a>六、其他</h3><p><a href="https://www.jianshu.com/p/be98d44b1a5c" target="_blank" rel="noopener">Android序列化浅析</a></p>
+<p><a href="https://www.jianshu.com/p/d12417240dd0" target="_blank" rel="noopener">Android项目构建过程分析</a></p>
+<p><a href="https://www.jianshu.com/p/5f92cbde6080" target="_blank" rel="noopener">android imageview scaletype属性</a></p>
+<p><a href="https://www.jianshu.com/p/1defbfd6b311" target="_blank" rel="noopener">Android中shape中的属性大全</a></p>
+<p><a href="https://www.jianshu.com/p/7b948b47e986" target="_blank" rel="noopener">Android数据存储路径分析</a></p>
+<p><a href="https://www.jianshu.com/p/b1cacb5605b4" target="_blank" rel="noopener">viewpage+fragment浅谈几点问题</a></p>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux:"></a>Linux:</h2><h3 id="一、内存管理："><a href="#一、内存管理：" class="headerlink" title="一、内存管理："></a>一、内存管理：</h3><p><a href="https://www.jianshu.com/p/a0993c07f660" target="_blank" rel="noopener">Linux学习-内存管理篇（一） - 概览</a></p>
+<p><a href="https://www.jianshu.com/p/db9b7024fcbc" target="_blank" rel="noopener">Linux学习-内存管理篇（二）-MMU介绍</a></p>
+<p><a href="https://www.jianshu.com/p/cbc84c7b375f" target="_blank" rel="noopener">Linux学习-内存管理篇（三）-节点、分区、页、页框、页表关系分析</a></p>
+<p><a href="https://www.jianshu.com/p/271c316b53ef" target="_blank" rel="noopener">Linux学习-内存管理篇（四）-内存分配算法</a></p>
+<p><a href="https://www.jianshu.com/p/e42f4977fb7e" target="_blank" rel="noopener">Linux学习-内存管理篇（五）-内存分配函数</a></p>
+<p><a href="https://www.jianshu.com/p/7ab51b8a6368" target="_blank" rel="noopener">Linux学习-内存管理篇（六）-内存回收(lru链表)</a></p>
+<h3 id="二、进程管理与进程调度"><a href="#二、进程管理与进程调度" class="headerlink" title="二、进程管理与进程调度"></a>二、进程管理与进程调度</h3><p><a href="https://www.jianshu.com/p/7823c51fe5ff" target="_blank" rel="noopener">Linux学习-进程管理与调度（一）-进程描述及其生命周期</a></p>
+<p><a href="https://www.jianshu.com/p/d3cd983d9814" target="_blank" rel="noopener">Linux学习-进程管理与调度（二）-进程的创建与销毁</a></p>
+<p><a href="https://www.jianshu.com/p/94764e671891" target="_blank" rel="noopener">Linux学习-进程管理与调度（三）-调度基础</a></p>
+<p><a href="https://www.jianshu.com/p/4ad4c5cd9dbd" target="_blank" rel="noopener">Linux学习-进程管理与调度（四）-负载均衡与实时性</a></p>
+<h3 id="三、文件-amp-权限："><a href="#三、文件-amp-权限：" class="headerlink" title="三、文件&amp;权限："></a>三、文件&amp;权限：</h3><p><a href="https://www.jianshu.com/p/d4ced82bf1d0" target="_blank" rel="noopener">Linux学习 - 文件基本属性</a></p>
+<p><a href="https://www.jianshu.com/p/830c7f4129bf" target="_blank" rel="noopener">Linux学习 - SELinux/SEAndroid</a></p>
+<h2 id="脚本入门："><a href="#脚本入门：" class="headerlink" title="脚本入门："></a>脚本入门：</h2><h3 id="一、Python"><a href="#一、Python" class="headerlink" title="一、Python"></a>一、Python</h3><p><a href="https://www.jianshu.com/p/1714f8e69d70" target="_blank" rel="noopener">Python入门（一）-语法基础</a></p>
+<p><a href="https://www.jianshu.com/p/767333d7de6c" target="_blank" rel="noopener">Python入门（二）-函数</a></p>
+<p><a href="https://www.jianshu.com/p/2f97ac0f2a42" target="_blank" rel="noopener">Python入门（三）-面向对象</a></p>
+<p><a href="https://www.jianshu.com/p/fd5514d29d02" target="_blank" rel="noopener">Python入门（四）-字符串常规操作</a></p>
+<p><a href="https://www.jianshu.com/p/821b7b55efb5" target="_blank" rel="noopener">Python入门（五）-文件读写</a></p>
+<h3 id="二、makeFile"><a href="#二、makeFile" class="headerlink" title="二、makeFile"></a>二、makeFile</h3><p><a href="https://www.jianshu.com/p/91b16154a3e4" target="_blank" rel="noopener">Makefile入门（一）-概述</a></p>
+<p><a href="https://www.jianshu.com/p/f7ce716439e4" target="_blank" rel="noopener">Makefile入门（二）-MakeFile介绍</a></p>
+<p><a href="https://www.jianshu.com/p/94002461bc75" target="_blank" rel="noopener">Makefile入门（三）-书写规则</a></p>
+<p><a href="https://www.jianshu.com/p/b045c7eabec5" target="_blank" rel="noopener">Makefile入门（四）-书写命令</a></p>
+<p><a href="https://www.jianshu.com/p/970c137c2e16" target="_blank" rel="noopener">Makefile入门（五）-使用变量</a></p>
+<p><a href="https://www.jianshu.com/p/18339cfbb087" target="_blank" rel="noopener">Makefile入门（六）-使用条件判断</a></p>
+<p><a href="https://www.jianshu.com/p/58ea600d6297" target="_blank" rel="noopener">Makefile入门（七）-使用函数</a></p>
+<p><a href="https://www.jianshu.com/p/0f75438bcc4e" target="_blank" rel="noopener">Makefile入门（八）-make运行</a></p>
+<p><a href="https://www.jianshu.com/p/c584de55eb70" target="_blank" rel="noopener">Makefile入门（九）-隐含规则</a></p>
+<p><a href="https://www.jianshu.com/p/bb5462b56862" target="_blank" rel="noopener">Makefile入门（十）-使用make更新函数库文件</a></p>
+<p><a href="https://www.jianshu.com/p/5893cfb6fd67" target="_blank" rel="noopener">Makefile学习总结</a></p>
+<h2 id="数据结构-amp-算法"><a href="#数据结构-amp-算法" class="headerlink" title="数据结构&amp;算法"></a>数据结构&amp;算法</h2><p><a href="https://www.jianshu.com/p/d93c074b1a41" target="_blank" rel="noopener">数据结构&amp;算法（一）-算法思想</a></p>
+<p><a href="https://www.jianshu.com/p/a849cfecd2f0" target="_blank" rel="noopener">数据结构&amp;算法（二）-单链表</a></p>
+<p><a href="https://www.jianshu.com/p/4465a65463dd" target="_blank" rel="noopener">数据结构&amp;算法（三）-二叉树</a></p>
+<p><a href="https://www.jianshu.com/p/a5edb95a406d" target="_blank" rel="noopener">数据结构与算法（四）-排序</a></p>
+<p><a href="https://www.jianshu.com/p/466d33064412" target="_blank" rel="noopener">数据结构&amp;算法（五）-字符串</a></p>
+<p><a href="https://www.jianshu.com/p/208261aedae5" target="_blank" rel="noopener">数据结构&amp;算法（六）-数组</a></p>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">叶 子胜</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://yezisheng.tech/2020/05/08/Android-%E9%83%A8%E5%88%86%E5%BD%92%E7%BA%B3%E6%80%BB%E7%BB%93/">https://yezisheng.tech/2020/05/08/Android-%E9%83%A8%E5%88%86%E5%BD%92%E7%BA%B3%E6%80%BB%E7%BB%93/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://yezisheng.tech" target="_blank">叶子的随想</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Android-%E6%80%BB%E7%BB%93/">Android 总结</a></div><div class="post_share"><div class="social-share" data-image="/img/post.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/wechat.jpg" alt="微信"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="/img/alipay.jpg" alt="支付寶"/><div class="post-qr-code__desc">支付寶</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="next-post pull-full"><a href="/2020/04/23/Hexo%20%E7%A4%BA%E4%BE%8B/"><img class="next_cover lazyload" data-src="/img/post.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hexo 示例</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 By 叶 子胜</div><div class="framework-info"><span>驱动 </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script></body></html>
